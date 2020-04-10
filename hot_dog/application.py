@@ -1,7 +1,7 @@
-from model.logistic_regression import model
-from model.logistic_regression import predict
-from hot_dog.dataset import load_dataset
-from hot_dog.dataset import read_one_image
+from model import predict
+from model import model
+from hot_dog import load_dataset
+from hot_dog import read_one_image
 
 if __name__ == '__main__':
     """
