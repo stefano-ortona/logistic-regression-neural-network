@@ -1,7 +1,7 @@
 from model.logistic_regression import model
 from model.logistic_regression import predict
-from dataset import load_dataset
-from dataset import read_one_image
+from hot_dog.dataset import load_dataset
+from hot_dog.dataset import read_one_image
 
 if __name__ == '__main__':
     """
@@ -35,7 +35,7 @@ if __name__ == '__main__':
 
     # Use the newly trained model to predict whether a new image is hot dog or not
     # Define here path to the new image to be predicted
-    new_image_path = base_folder + ""
+    new_image_path = base_folder + "test.jpg"
     # Load the image as a feature vector
     new_image = read_one_image(new_image_path)
     # Predict the class on the new image
