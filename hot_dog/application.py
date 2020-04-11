@@ -2,6 +2,10 @@ from model import predict
 from model import model
 from hot_dog import load_dataset
 from hot_dog import read_one_image
+from hot_dog import dataset
+import matplotlib.pyplot as plt
+import numpy as np
+
 
 if __name__ == '__main__':
     """
@@ -17,7 +21,7 @@ if __name__ == '__main__':
     Network approach. Once the model is built and trained, the model is used to predict whether a new chosen image is
     actually a hot dog or not
     
-    NOTE: training the model with standard parameters takes around ~40 seconds with 5000 iterations
+    NOTE: training the model with standard parameters takes around ~60 seconds with 2500 iterations
     """
     # Define here your base folder containing training and test examples with hot dot/not hot dog images
     # NOTE: it must be an absolute path
@@ -31,7 +35,7 @@ if __name__ == '__main__':
     # Train the model
     # Feel free to modify parameters such as iteration, learning rate or threshold to check variations in performance
     m = model(x_train, y_train, x_test, y_test,
-              iteration=5000, learning_rate=0.005, threshold=0.5, print_cost=True)
+              iteration=2500, learning_rate=0.005, threshold=0.5, print_cost=True)
 
     # Use the newly trained model to predict whether a new image is hot dog or not
     # Define here path to the new image to be predicted
@@ -44,4 +48,17 @@ if __name__ == '__main__':
     assert y_out.shape == (1, 1)
     out_class = "hot dog" if y_out[0][0] == 1 else "not hot-dog"
 
-    print("New image '{}' is predicted as '{}'".format(new_image_path, out_class))
+    # Predict and show new image
+    print("Image '{}' is predicted as '{}'".format(new_image_path, out_class))
+    img_size = dataset.pixel_size
+    plt.imshow(new_image.reshape((img_size[0], img_size[1], 3)))
+    plt.title("Image '{}' is predicted as '{}'".format(new_image_path, out_class))
+    plt.show(block=True)
+
+    # Show cost variation plot
+    all_costs = np.squeeze(m['costs'])
+    plt.plot(all_costs)
+    plt.ylabel('Cost Function value')
+    plt.xlabel('Number of iterations (x100)')
+    plt.title("Cost function variation with learning rate = {}".format(str(m["learning_rate"])))
+    plt.show()
