@@ -4,7 +4,7 @@ from PIL import Image
 
 
 # All images in the dataset will be re-sized with the following pixel sizes
-pixel_size = (64, 64)
+pixel_size = (100, 100)
 
 
 def load_dataset(path_train_pos, path_train_neg, path_test_pos, path_test_neg):
