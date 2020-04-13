@@ -1,4 +1,5 @@
 
+
 # Logistic Regression Neural Network
 This repository contains a Neural Network implementation of 
 [Logistic Regression](https://en.wikipedia.org/wiki/Logistic_regression) Binary Classifier.
@@ -23,13 +24,13 @@ print("Here is the prediction on the 10th test example: {}".format(trained_model
 ```
 The input of the function call is:
 
-- _x_train_: a (n, $m$) numpy vector, where $m$ is the number of training examples and n is the number of features. In this matrix each column is a single training example with n features
-- _y_train_: a (1, $m$) numpy vector where each element is either 0 or 1, representing the truth classification for each training example
-- _x_test_: a (n, $m^{'}$) numpy vector. Similar to _x_train_, n is the number of features and $m^{'}$ is the number of test examples. Each column in this matrix is one test example. This matrix can also be empty
-- _y_test_: a (1, $m^{'}$) numpy vector where each element is either 0 or 1, representing the truth classification for each training example
+- _x_train_: a (n, m) numpy vector, where m is the number of training examples and n is the number of features. In this matrix each column is a single training example with n features
+- _y_train_: a (1, m) numpy vector where each element is either 0 or 1, representing the truth classification for each training example
+- _x_test_: a (n, m') numpy vector. Similar to _x_train_, n is the number of features and m' is the number of test examples. Each column in this matrix is one test example. This matrix can also be empty
+- _y_test_: a (1, m') numpy vector where each element is either 0 or 1, representing the truth classification for each training example
 - _iteration_: number of training iterations to be performed (integer)
-- _learning_rate_: learning rate parameter $\alpha$ (float)
-- _threshold_: classification threshold (float $\in [0,1]$)
+- _learning_rate_: learning rate parameter <img src="https://render.githubusercontent.com/render/math?math=\alpha"> (float)
+- _threshold_: classification threshold (float <img src="https://render.githubusercontent.com/render/math?math=\in [0,1]"> )
 - _print_cost_: if set to True, then the value of the cost function will be printed every 100th iterations
 
 The output of the function is a dictionary containing the following elements:
@@ -38,13 +39,13 @@ The output of the function is a dictionary containing the following elements:
 - _iteration_: same as above
 - _threshold_: same as above
 - _costs_: a list containing all cost function values computed during training every 100th iteration
-- _w_: a (n,1) numpy vector, containing the values of the parameter $w$ with n features
-- _b_: real number parameter $b$
-- _prediction_train_: a (1,$m$) vector where each element is either 0 or 1, representing the output classification of the model for each training example
-- _prediction_test_: a (1,$m^{'}$) vector where each element is either 0 or 1, representing the output classification of the model for each test example
+- _w_: a (n,1) numpy vector, containing the values of the parameter w with n features
+- _b_: real number parameter b
+- _prediction_train_: a (1,m) vector where each element is either 0 or 1, representing the output classification of the model for each training example
+- _prediction_test_: a (1,m') vector where each element is either 0 or 1, representing the output classification of the model for each test example
 
 ### Use the trained Model
-After having trained the model and computed parameters $w$ and $b$, you can use the model to make predictions on new data as follows:
+After having trained the model and computed parameters w and b, you can use the model to make predictions on new data as follows:
 ```python
 from model.logistic_regression import model
 from model.logistic_regression import predict
@@ -59,12 +60,12 @@ y_out = predict(x_new, w, b, threshold=0.5)
 
 The input of the function call is:
 
-- _x_new_: a (n, $m^{''}$) numpy vector, where $m^{''}$ is the number of new examples to be predicted and n is the number of features. In this matrix each column is a single new example with n features to be predicted
-- _w_: the parameter $w$ built after training the model
-- _b_: the parameter $b$ built after training the model
+- _x_new_: a (n, m'') numpy vector, where m'' is the number of new examples to be predicted and n is the number of features. In this matrix each column is a single new example with n features to be predicted
+- _w_: the parameter w built after training the model
+- _b_: the parameter b built after training the model
 - _threshold_: classification threshold
 
-The output of the call is a (1, $m^{''}$) numpy vector where each element is either 0 or 1, representing the output classification of the model for each new example.
+The output of the call is a (1, m'') numpy vector where each element is either 0 or 1, representing the output classification of the model for each new example.
 
 Have a look at the example application to see the model trained and used in full fashion
 
